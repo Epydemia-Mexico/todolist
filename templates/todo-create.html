@@ -6,10 +6,10 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Inicia Sesión
+        Crea tu tarea
       </h1>
       <h2 class="subtitle">
-        Accede a tu cuenta para revisar tus tareas
+          Se especifico con tu tarea para una mejor productividad.
       </h2>
     </div>
   </div>
@@ -21,32 +21,24 @@
           <img src="{% static 'images/chat.png' %}">
         </figure>
         {% include 'notifications.html' %}
-        <form action="{% url 'user-login' %}" method="post">
+        <form action="{% url 'create-todo' %}" method="post">
             {% csrf_token %}
+            {{ form.user }}
             <div class="field">
-                <label class="label">Nombre de usuario:</label>
+                <label class="label">Titulo de la tarea:</label>
                 <div class="control has-icons-left has-icons-right">
-                    {{ form.username }}
+                    {{ form.title }}
                     <span class="icon is-small is-left">
                       <i class="fas fa-user"></i>
                     </span>
                 </div>
             </div>
-            <div class="field">
-                <label class="label">Contraseña:</label>
-                <div class="control has-icons-left has-icons-right">
-                    {{ form.password }}
-                    <span class="icon is-small is-left">
-                      <i class="fas fa-key"></i>
-                    </span>
-                </div>
-            </div>
             <div class="field is-grouped">
-                <div class="control">
-                    <button class="button is-link">Enviar</button>
+               <div class="control">
+                    <button class="button is-link is-light">Cancelar</button>
                 </div>
                 <div class="control">
-                    <button class="button is-link is-light">Cancelar</button>
+                    <button class="button is-link">Crear Tarea</button>
                 </div>
             </div>
         </form>

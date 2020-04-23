@@ -37,16 +37,17 @@
   </div>
 </div>
 <section class="container">
+    {% include 'notifications.html' %}
   <div class="level-item">
     <h1 class="title is-4">Inicia sesión o registrate para ver tu tablero!</h1>
   </div>
     <br>
   <div class="level-item">
-     <button class="button is-primary is-rounded is-fullwidth">Inicia Sesión</button>
+     <a href="{% url 'user-login' %}" class="button is-primary is-rounded is-fullwidth">Inicia Sesión</a>
   </div>
     <br>
   <div class="level-item">
-    <button class="button is-link is-rounded is-fullwidth">Registrate</button>
+    <a href="{% url 'user-register' %}" class="button is-link is-rounded is-fullwidth">Registrate</a>
   </div>
   <br>
   <div class="level-item">

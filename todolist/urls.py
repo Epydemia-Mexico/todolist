@@ -19,9 +19,22 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from accounts.views import (
+    IndexView,
+    RegisterView,
+    LoginView,
+    LogoutView,
+)
+
+from todo.views import TodoCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_roor=settings.MEDIA_ROOT)  # Se agrega la ruta donde estara nuestra carpeta Media en un entorno de desarollo.
+    path('', IndexView.as_view(), name='home'),
+    path('registro', RegisterView.as_view(), name='user-register'),
+    path('inicia-sesion', LoginView.as_view(), name='user-login'),
+    path('cierra-sesion', LogoutView.as_view(), name='user-logout'),
+    path('crear-tarea', TodoCreateView.as_view(), name='create-todo'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Se agrega la ruta donde estara nuestra carpeta Media en un entorno de desarollo.
 
 

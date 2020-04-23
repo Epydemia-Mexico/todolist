@@ -19,12 +19,21 @@
     </div>
     <div class="navbar-menu" id="navMenu">
       <div class="navbar-end">
-        <div class="navbar-item">
-          <a href="navbar-link">Inicia sesión</a>
-        </div>
-        <div class="navbar-item">
-          <a href="navbar-link">Registrate</a>
-        </div>
+          {% if request.user.is_authenticated %}
+            <div class="navbar-item">
+                <p>Hola {{ request.user.username }}!!</p>
+            </div>
+            <div class="navbar-item">
+                <a href="{% url 'user-logout' %}">Cierra Sesion</a>
+            </div>
+          {% else %}
+            <div class="navbar-item">
+              <a href="{% url 'user-login' %}">Inicia sesión</a>
+            </div>
+            <div class="navbar-item">
+              <a href="{% url 'user-register' %}">Registrate</a>
+            </div>
+          {% endif %}
       </div>
     </div>
   </div>
@@ -41,5 +50,16 @@
   </div>
 </footer>
 <script src="{% static 'js/bulma.js' %}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+    $notification = $delete.parentNode;
+
+    $delete.addEventListener('click', () => {
+      $notification.parentNode.removeChild($notification);
+    });
+  });
+});
+</script>
 </body>
 </html>

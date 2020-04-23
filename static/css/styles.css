@@ -42,3 +42,7 @@ footer {
 .form-section{
   padding: 2rem;
 }
+
+.errorlist li{
+  color: red;
+}
